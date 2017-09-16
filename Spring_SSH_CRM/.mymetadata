@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Spring_SSH_CRM"
+  id="myeclipse.1503024846192"
+  context-root="/Spring_SSH_CRM"
+  j2ee-spec="5.0"
+  archive="Spring_SSH_CRM.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

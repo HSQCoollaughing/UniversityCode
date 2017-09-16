@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+<constant name="struts.devMode" value="true"></constant>
+<constant name="struts.ui.theme" value="simple"></constant>
+<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+<!-- 自定义拦截器的配置 -->
+<package name="mydefault" extends="struts-default" abstract="true">
+
+
+<interceptors>
+			<interceptor name="CheckLoginInterceptor" class="com.hsq.interceptor.CheckLoginInterceptor"></interceptor>
+			<interceptor-stack name="myDefaultStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="CheckLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 重置默认拦截器栈 -->
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+		<!-- 全局结果视图 -->
+		<global-results>
+			<result name="login">/login/login.jsp</result>
+		</global-results>
+
+
+</package>
+
+
+
+<package name="p1" extends="struts-default">
+<!--  用户登录的动作-->
+<action name="login" class="com.hsq.action.UserAction" method="login">
+
+<result type="redirect">/login/home.jsp</result>
+<result name="input">/login/login.jsp</result>
+</action>
+
+
+</package>
+
+<package name="p2" namespace="/user" extends="mydefault">
+
+<action name="add" class="com.hsq.action.UserAction" method="addUser">
+<interceptor-ref name="defaultStack">
+
+<param name="fileUpload.allowedExtensions">.doc,.docx</param>
+
+</interceptor-ref>
+<result  type="redirectAction">findAll</result>
+<result name="input">/user/add.jsp</result>
+</action>
+
+<action name="findAll" class="com.hsq.action.UserAction" method="findAll">
+
+
+<result>/user/list.jsp</result>
+</action>
+
+<action name="findById" class="com.hsq.action.UserAction" method="findById">
+
+
+<result>/user/view.jsp</result>
+</action>
+
+<action name="download" class="com.hsq.action.UserAction" method="download">
+
+
+<result type="stream">
+<!-- 给stream结果类型注入参数           流的信息      告知浏览器以下载的方式打开     告知浏览器响应正文的内容     -->
+<param name="inputName">inputStream</param>
+<param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(oldFileName,"UTF-8")}</param>
+<param name="contentType">application/octet-stream</param>
+</result>
+</action>
+
+<action name="delete" class="com.hsq.action.UserAction" method="delete">
+
+<result  type="redirectAction">findAll</result>
+</action>
+
+<action name="edit" class="com.hsq.action.UserAction" method="edit">
+
+<result>/user/edit.jsp</result>
+</action>
+<action name="update" class="com.hsq.action.UserAction" method="update">
+
+<result  type="redirectAction">findAll</result>
+</action>
+<action name="findByCondition" class="com.hsq.action.UserAction" method="findByCondition">
+
+<result >/user/list.jsp</result>
+</action>
+</package>
+</struts>

@@ -1,0 +1,101 @@
+
+
+
+.icon_tb{ background:url(../images/icon.png) no-repeat; display:inline-block;}
+.search_tb{ width:20px; height:20px; background-position:-74px -93px; position:absolute; right:8px; top:18px;}
+.close_tb{ width:21px; height:22px; background-position:-50px -93px; }
+.set_tb{ width:22px; height:22px; background-position:-25px -93px; }
+.home_tb{ width:23px; height:20px; background-position:0 -93px; }
+.text_tb{ width:27px; height:27px; background-position:0 0; }
+.photo_tb{ width:32px; height:27px; background-position:-28px 0; }
+.video_tb{ width:31px; height:31px; background-position:-61px 0; }
+.link_tb{ width:31px; height:30px; background-position:-93px 0; }
+.code_tb{ width:31px; height:20px; background-position:-125px 0; }
+.add_bt{ width:14px; height:14px; background-position:-75px -32px; }
+.add_small_tb{ background-position:-107px -32px; width:14px; height:14px; }
+.add_small_tb{vertical-align:middle; margin-left:5px; }
+.left_nav:hover .add_bt{ background-position:-107px -32px;}
+.Leave_tb,.forwarding_tb,.collection_tb{ vertical-align:middle;  margin-right:5px; }
+.Leave_tb{ width:18px; height:16px; background-position:0 -51px; }
+.forwarding_tb{ width:17px; height:16px; background-position:-20px -51px; }
+.collection_tb{ width:17px; height:16px; background-position:-39px -51px; }
+
+.article_tb{ width:17px; height:17px; background-position:0 -32px; margin-top:4px; }
+.fans_tb{ width:18px; height:16px; background-position:-19px -32px; margin-top:4px; }
+.notice_tb{ width:15px; height:17px; background-position:-39px -32px; margin-top:5px; }
+.direct_tb{ width:17px; height:12px; background-position:-56px -32px; margin-top:7px;}
+.smiling_tb{ width:18px; height:18px; background-position:0 -71px; }
+.xiajiantou_tb{  width:11px; height:7px; background-position:-141px -32px; margin-left:10px;}
+.del_tb{ width:7px; height:7px; background-position:-130px -51px; margin-left:10px; }
+
+
+
+.fs12{ font-size:12px;}
+.color_gray{ color:#c5c6c9;}
+.color_gray1{color:#777d85;}
+.wth270{ width:270px; padding:0 45px;}
+.wth423{ width:423px;}
+.wth620{ width:620px;}
+.mt10{ margin-top:10px;}
+.mt15{ margin-top:15px;}
+.mt20{ margin-top:20px;}
+.ml20{ margin-left:20px;}
+.mr20{ margin-right:20px;}
+
+
+.head{ width:100%; height:57px; background:#242a32; box-shadow:0 3px 3px #acb1b8;}
+.head_cont{ width:1020px; height:57px; margin:auto; background:url(../images/logo.png) no-repeat left center;}
+.head_search{ width:223px; padding:12px 0;  position:relative;}
+.head_search input{ width:203px; height:29px; padding:0 10px; color:#acb1b8; border:2px solid #43484F; border-radius:15px; background:#33383f;}
+.head_icon{ display:block; margin-top:20px; margin-right:25px;}
+
+.content{ width:100%; background:#363c45;}
+.cont_cont{ width:1020px; margin:auto; padding:20px 0;}
+.cont_user_img{ margin-right:20px; }
+.cont_comments{ width:495px; padding:20px; background:#fff; border-radius:5px;}
+.cont_comments p textarea,.pingl_inpu{ width:96%; padding:10px; border:1px solid #dddcdc; border-radius:3px; box-shadow:inset 0 0 5px #dddcdc;}
+.import li{ float:left; width: 42px; padding: 10px 28px; margin-top:10px; text-align:center; border-left:1px solid #ddd; }
+.import li:first-child{width: 40px; border-left:none;}
+.import li a span{ display:inline-block; height:38px; line-height:48px;}
+.essay_title{ color:#3e4146; font-size:18px;}
+.essay_cont{ color:#777d85; padding-bottom:50px; border-bottom:1px solid #ddd;}
+.link_btn{ display:inline-block; margin-left:5px; color:#fff; padding:0 4px; border-radius:3px;}
+.Leave_btn{ margin-left:10px; color:#c5c6c9;}
+.left_nav{ padding:10px; border-bottom:1px solid #40454d;}
+.notice_number1,.notice_number{padding:0px 7px;  }
+.notice_number{ background:#9098a2; color:#fff;border-radius:11px; }
+.user_img{ border-radius:3px;}
+.reply_btn{ padding:2px 20px; background:#5a8add; color:#fff; border-radius:3px; cursor:pointer;}
+.pinglun_box{ width:535px; border-radius:5px; }
+.horizontal{ display:inline-block; width:388px; height:1px; background:#dddcdc; margin-left:20px;vertical-align: middle;}
+.shuru_box{ background:#fff;  border-radius:5px 5px 0 0; padding:20px;}
+.pinglun{  background:#f6f6f6; border-radius:0 0 5px 5px; padding:20px; border-top:1px solid #dddcdc; }
+.pl_box:hover a{display:inline-block;}
+.comments_box{ max-height:450px; overflow:auto;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

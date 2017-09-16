@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tz.dao.CommentMapper">  
+	<!--  所有的增，删，查，改都在这里进行定义  -->
+	<select id="findComments" resultType="java.util.HashMap" parameterType="TzParams">
+		 SELECT 	
+		 	tc.id, 	
+		 	tc.title, 	
+		 	tc.content, 	
+		 	tc.create_time as createTime, 	
+		 	tc.tag, 	
+		 	tc.user_id as userId, 	
+		 	tu.username, 	
+		 	tu.male, 	
+		 	tu.sign, 	
+		 	tu.header_pic as headerPic 
+		 FROM 	tz_comment tc  
+		 LEFT JOIN tz_user tu ON tu.id = tc.user_id  
+		 WHERE
+			 tu.is_delete = 0  
+			 AND tc.is_delete = 0  
+			 AND tc.`status` = 1
+			 AND tc.user_id in (1,2,3)	 
+		ORDER BY tc.create_time desc  
+		LIMIT ${pageNo},${pageSize}
+	</select>
+	
+	<insert id="saveComment" parameterType="Comment">
+		INSERT INTO tz_comment (title,content,user_id,status,is_delete,sort,tag) VALUES(#{title},#{content},#{userId},#{status},#{isDelete},#{sort},#{tag})
+	</insert>
+	
+	<update id="updateComment" parameterType="Map">
+		UPDATE tz_comment SET is_delete = 1 WHERE id = #{id}  and user_id=#{userId} 
+	</update>
+	
+</mapper>

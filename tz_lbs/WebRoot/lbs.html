@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>潭州特训班 - LBS移动电商系统 - Arry老师</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			img{border:none;}
+			a{text-decoration:none;}
+
+			/*top start*/
+			#top{width:100%;height:54px;background:#2F333B;position:fixed;z-index:1000;}
+			#top .t_header{width:95%;height:54px;margin:0 auto;}
+			#top .t_header .h_logo{margin-top:8px;float:left;}
+			#top .t_header .h_desc{float:right;font-size:20px;line-height:54px;}
+			/*end top*/
+
+			/*content start*/
+			#content{width:100%;height:100%;position:absolute;overflow:hidden;}
+			#content .c_map{width:100%;height:100%;}
+			#content .c_list{width:285px;height:100%;background:#fff;position:absolute;right:0;top:54px;border:1px solid #E6E6E6;}
+			#content .c_list ul li{list-style:none;height:76px;border-bottom:1px dotted #ccc;line-height:76px;padding-left:10px;cursor: pointer;}
+			#content .c_list ul li span{padding-left:10px;font-size:14px;font-weight:bold;color:#666;}
+			#content .c_list ul li:hover{background:#ecf4ff;}
+			#content .c_list ul li img{border-radius:50%;}
+			/*end content*/
+
+			/*btn start*/
+			#btn{width:23px;height:45px;display:inline-block;background:#fff;position:absolute;right:285px;top:50%;border:1px solid #E6E6E6;border-right:none;line-height:45px;text-align:center;text-decoration:none;font-size:14px;font-weight:bold;color:#999;}
+			#btn:hover{color:#F60;}
+			/*end btn*/
+			
+			/*标记物的切换*/
+			 .micon {
+				background: url(http://webapi.amap.com/theme/v1.3/images/newpc/poi-1.png) no-repeat;
+				display:inline-block;
+				width:28px;
+				height:38px;
+				
+			}
+			 .mp{position: absolute;}
+			 .m1 {background-position: -5px -96px;}
+			 .m2 {background-position: -44px -96px;}
+			 .m3 {background-position: -84px -96px;}
+			 .m4 {background-position: -122px -96px;}
+
+			 /*自定义窗口*/
+			 .dialogbox{width:380px;background:#111;padding:5px;}
+			 .dialogbox .wrapbox{width:380px;}
+			 .dialogbox .wrapbox .imgbox{height:220px;background:#111}
+			 .dialogbox .wrapbox .imgbox img{width:380px;height:220px}
+			 .dialogbox .wrapbox h3{background:;margin-top:12px;}
+			  .dialogbox .wrapbox h3 a{font-size:16px;color:#fff;}
+			 .dialogbox .wrapbox p{margin-top:12px;font-size:12px;color:#fff;text-align:justify}
+		</style>
+	</head>
+<body>
+	
+	
+
+
+	<!--top start-->
+	<div id="top">
+		<div class="t_header">
+			<div class="h_logo">
+				<a href="#"><img src="images/logo.png" alt="潭州学院" width="136" height="35" /></a>
+				<input type="button" onclick="tzMap.change('北京')" value="切换北京"/>
+				<input type="button" onclick="tzMap.change('上海')" value="切换上海"/>
+				<span class="micon m1" data-icon="m1"></span>
+				<span class="micon m2" data-icon="m2"></span>
+				<span class="micon m3" data-icon="m3"></span>
+				<span class="micon m4" data-icon="m4"></span>
+				<input type="hidden" id="cicon" value="m1"/>
+				<input type="text" id="gw" />
+			</div>
+			<div class="h_desc">潭州LBS移动电商系统</div>
+		</div>
+	</div>
+	<!--end top-->
+	
+	
+	<!--content start-->
+	<div id="content">
+		<div class="c_map" id="c_map_con"></div>
+		<div class="c_list">
+			<ul id="k_diapulist"></ul>
+		</div>
+	</div>
+	<!--end content-->
+	
+	<!--btn start-->
+	<a href="#" id="btn">&gt;&gt;</a>
+	<!--end btn-->
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<!--引入高德地图API-->
+<script src="http://webapi.amap.com/maps?v=1.3&key=b245ae8390f2ecdc0e5706241c28fc7b"></script>
+<script type="text/javascript" src="js/tz_map.js"></script>
+<script>
+
+    var map = new AMap.Map('c_map_con', {
+        resizeEnable: true,
+        zoom:11,
+        center: [116.397428, 39.90923]
+    });
+		
+	
+	// 商品列表收缩
+	$(function(){
+		//初始化,获取经纬度的初始化
+		tzMap.init();
+	
+		$("#btn").click(function(){
+			var text = $("#btn").text();
+			if(">>" == text){
+				$("#content .c_list").animate({right:"-285px"});
+				$(this).animate({right:0}).html("&lt;&lt;");
+			} else {
+				$("#content .c_list").animate({right:0});
+				$(this).animate({right:"285px"}).html("&gt;&gt;");				
+			}
+		});
+
+		$(".micon").click(function(){
+			var icon = $(this).data("icon");
+			$("#cicon").val(icon);
+		});
+	
+
+		function loadDianPuData(){
+			var jsonArr = [
+				{id:1,gd:116.283102,wd:39.927399,icon:"m1",title:"语阁刺绣欧根纱公主111",desc:"语阁刺绣 欧根纱",img:"images/1.jpg"},
+				{id:2,gd:116.460068,wd:40.033289,icon:"m2",title:"语阁刺绣欧根纱公主2222",desc:"语阁刺绣 欧根纱",img:"images/2.jpg"},
+				{id:3,gd:116.521368,wd:39.823061,icon:"m3",title:"语阁刺绣欧根纱公主333",desc:"语阁刺绣 欧根纱",img:"images/3.jpg"}
+			];
+
+			var html = "";
+			for(var i=0,len=jsonArr.length;i<len;i++){
+				var data = jsonArr[i];
+				html += "<li>"+
+				"	<a href='javascript:void(0);' class='ke_dianpu' data-gd='"+data.gd+"'  data-wd='"+data.wd+"' data-icon='"+data.icon+"'>"+
+				"		<img src='"+data.img+"' alt='"+data.title+"' width='60' height='60' align='center'/>"+
+				"	</a>"+
+				"	<span>"+data.title+"</span>"+
+				"</li>";
+
+				//数据加载的键店铺定位地图中
+				tzMap.marker(data.gd,data.wd,data.icon);
+			};
+			
+			$("#k_diapulist").html(html);
+
+
+			$("#k_diapulist").find(".ke_dianpu").click(function(){
+				var gd = $(this).data("gd");
+				var wd = $(this).data("wd");
+				var icon = $(this).data("icon");
+				tzMap.marker(gd,wd,icon,function(dialog,marker){
+					dialog.open(this, marker.getPosition());
+				});
+			});
+
+		};
+
+		loadDianPuData();
+
+
+
+
+	});
+
+</script>
+
+</body>
+</html>
